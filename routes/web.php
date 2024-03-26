@@ -33,24 +33,24 @@ Route::get('/jobs/{id}', function ($id) {
     $jobs = [
         [
             'id' => 1,
-            'title' => 'SWE',
+            'title' => 'Software Engineer',
             'salary' => '50000'
         ],
         [
             'id' => 2,
-            'title' => 'SRE',
+            'title' => 'Site Realibility Engineer',
             'salary' => '44000'
         ],
         [
             'id' => 3,
-            'title' => 'QA',
+            'title' => 'Quality Assurance',
             'salary' => '31000'
         ],
     ];
     
     $job = Arr::first($jobs, fn($job) => $job['id'] == $id );
 
-    return view('job', [ 'job' => '$job']);
+    return view('job', [ 'job' => $job]);
 });
 
 Route::get('/profile', function () {
