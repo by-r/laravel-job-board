@@ -54,7 +54,7 @@ Route::get('/jobs/{id}', function ($id) {
 });
 
 Route::get('/profile', function () {
-    return view('profiles', [
+    return view('profile', [
         'profiles' => [
             [
             'id' => 1,
@@ -90,7 +90,7 @@ Route::get('/profile/{id}', function ($id) {
 
     $profile = Arr::first($profiles, fn($profile) => $profile['id'] == $id );
 
-    return view('profile', ['profile' => $profile]);
+    return view('profiles', ['profile' => $profile]);
 });
 
 Route::get('/greeting', function () {
