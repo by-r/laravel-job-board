@@ -3,30 +3,46 @@
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
+$jobs = [
+    [
+        'id' => 1,
+        'title' => 'SWE',
+        'salary' => '50000'
+    ],
+    [
+        'id' => 2,
+        'title' => 'SRE',
+        'salary' => '44000'
+    ],
+    [
+        'id' => 3,
+        'title' => 'QA',
+        'salary' => '31000'
+    ],
+];
+
 Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/jobs', function () {
+$profiles = [
+    [
+        'id' => 1,
+        'name' => 'John Doe',
+        'currentJob' => 'unemployed',
+        'lookingforJob' => True
+    ],
+    [
+        'id' => 2,
+        'name' => 'Mack Doe',
+        'currentJob' => 'SWE',
+        'lookingforJob' => True
+    ]
+];
+
+Route::get('/jobs', function () use ($jobs) {
     return view('jobs', [
-        'jobs' => [
-            [
-                'id' => 1,
-                'title' => 'SWE',
-                'salary' => '50000'
-            ],
-            [
-                'id' => 2,
-                'title' => 'SRE',
-                'salary' => '44000'
-            ],
-            [
-                'id' => 3,
-                'title' => 'QA',
-                'salary' => '31000'
-            ],
-        ]
-    ]);
+        'jobs' => $jobs ]);
 });
 
 Route::get('/jobs/{id}', function ($id) {
@@ -53,22 +69,9 @@ Route::get('/jobs/{id}', function ($id) {
     return view('job', [ 'job' => $job]);
 });
 
-Route::get('/profile', function () {
+Route::get('/profile', function () use ($profiles) {
     return view('profile', [
-        'profiles' => [
-            [
-            'id' => 1,
-            'name' => 'John Doe',
-            'currentJob' => 'unemployed',
-            'lookingforJob' => True
-        ],
-        [
-            'id' => 2,
-            'name' => 'Mack Doe',
-            'currentJob' => 'SWE',
-            'lookingforJob' => True
-        ],
-        ]
+        'profiles' => $profiles
     ]);
 });
 
